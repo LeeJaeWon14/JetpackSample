@@ -1,7 +1,10 @@
 package com.example.jetpacksample.activity
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.jetpacksample.R
 import com.example.jetpacksample.databinding.ActivityMainBinding
 
@@ -12,6 +15,29 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnSelect.setOnClickListener {  }
+        binding.btnSelect.setOnClickListener {
+            callDialog()
+        }
+    }
+
+    private fun callDialog() {
+        val dlg = AlertDialog.Builder(this)
+        val arr = arrayOf("LiveData", "ViewModel")
+        dlg.setItems(arr, object : DialogInterface.OnClickListener {
+            override fun onClick(dialog: DialogInterface?, which: Int) {
+                when(which) {
+                    0 -> {
+                        Toast.makeText(this@MainActivity, "not implement yet", Toast.LENGTH_SHORT).show()
+                    }
+                    1 -> {
+
+                    }
+                    else -> { }
+                }
+            }
+        })
+
+        dlg.setCancelable(false)
+        dlg.show()
     }
 }
