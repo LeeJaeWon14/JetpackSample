@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">JetpackSample</string>
+    <string name="str_welcome">Welcome! press below button to select</string>
+</resources>
