@@ -20,5 +20,10 @@ class ViewModelActivity : AppCompatActivity() {
                 ViewModelProvider.NewInstanceFactory()
         ).get(MyViewModel::class.java)
 
+        binding.tvViewModel.setText(viewModel.count.toString())
+        binding.tvViewModel.setOnClickListener {
+            binding.tvViewModel.setText((++viewModel.count).toString())
+        }
+        binding.btnBack.setOnClickListener { finish() }
     }
 }
