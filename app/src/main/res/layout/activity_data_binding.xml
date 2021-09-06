@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
+        <import type="android.view.View" />
         <variable
             name="viewModel"
             type="com.example.jetpacksample.activity.DataBindingActivity.ViewModel" />
@@ -35,6 +36,7 @@
                 android:textSize="20dp"
                 tools:text = "Text"
                 android:text = "@{viewModel.text}"
+                android:visibility="@{viewModel.text.length() > 3 ? View.VISIBLE : View.INVISIBLE}"
                 android:layout_marginTop="20dp"/>
         </LinearLayout>
         <Button
