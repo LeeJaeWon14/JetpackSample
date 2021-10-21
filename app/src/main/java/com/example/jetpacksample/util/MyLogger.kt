@@ -1,4 +1,4 @@
-package com.example.jetpacksample.activity
+package com.example.jetpacksample.util
 
 import android.util.Log
 
@@ -8,27 +8,52 @@ class MyLogger {
 
 	//debug
         fun d(message : String) {
-            Log.d(TAG, buildLogMsg(message))
+            Log.d(
+                TAG,
+                buildLogMsg(
+                    message
+                )
+            )
         }
 
 	//Verbose
         fun v(message : String) {
-            Log.v(TAG, buildLogMsg(message))
+            Log.v(
+                TAG,
+                buildLogMsg(
+                    message
+                )
+            )
         }
 
         //info
         fun i(message : String) {
-            Log.i(TAG, buildLogMsg(message))
+            Log.i(
+                TAG,
+                buildLogMsg(
+                    message
+                )
+            )
         }
 
 	//Warning
         fun w(message : String) {
-            Log.w(TAG, buildLogMsg(message))
+            Log.w(
+                TAG,
+                buildLogMsg(
+                    message
+                )
+            )
         }
 
 	//Error
         fun e(message : String) {
-            Log.e(TAG, buildLogMsg(message))
+            Log.e(
+                TAG,
+                buildLogMsg(
+                    message
+                )
+            )
         }
 
         fun buildLogMsg(message : String) : String {
