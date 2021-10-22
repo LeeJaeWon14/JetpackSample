@@ -1,7 +1,7 @@
 package com.example.jetpacksample.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.jetpacksample.activity.vm.MyViewModel
 import com.example.jetpacksample.databinding.ActivityViewModelBinding
@@ -22,7 +22,7 @@ class ViewModelActivity : AppCompatActivity() {
 
         binding.tvViewModel.setText(viewModel.count.toString())
         binding.tvViewModel.setOnClickListener {
-            binding.tvViewModel.setText((++viewModel.count).toString())
+            binding.tvViewModel.text = (++viewModel.count).toString()
         }
         binding.btnBack.setOnClickListener { finish() }
     }

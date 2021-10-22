@@ -2,11 +2,9 @@ package com.example.jetpacksample.activity
 
 import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.example.jetpacksample.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.jetpacksample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -28,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             override fun onClick(dialog: DialogInterface?, which: Int) {
                 when(which) {
                     0 -> {
-                        Toast.makeText(this@MainActivity, "not implement yet", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this@MainActivity, LiveDataActivity::class.java))
                     }
                     1 -> {
                         startActivity(Intent(this@MainActivity, ViewModelActivity::class.java))

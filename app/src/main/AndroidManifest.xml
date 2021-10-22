@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackSample">
-        <activity android:name=".activity.DataBindingActivity"
-            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".activity.LiveDataActivity"></activity>
+        <activity
+            android:name=".activity.DataBindingActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".activity.ViewModelActivity" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>
