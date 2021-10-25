@@ -4,7 +4,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import com.example.jetpacksample.R
 import com.example.jetpacksample.activity.vm.MyViewModel
@@ -16,11 +17,14 @@ import kotlinx.coroutines.launch
 
 class LiveDataActivity : AppCompatActivity() {
     private lateinit var binding : ActivityLiveDataBinding
-    private lateinit var model : MyViewModel
+
+
+    lateinit var model : MyViewModel
+    val liveData : MutableLiveData<String> by lazy { MutableLiveData<String>() }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLiveDataBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+//        binding = ActivityLiveDataBinding.inflate(layoutInflater)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_live_data)
 
         var count = 0
         model = ViewModelProvider(this).get(MyViewModel::class.java)
@@ -29,17 +33,24 @@ class LiveDataActivity : AppCompatActivity() {
 //            binding.tvLiveData.text = it
 //        }
 
-        model.textValue.observe(this, Observer {
-            binding.tvLiveData.text = it
-        })
+//        model.textValue.observe(this, Observer {
+//            binding.tvLiveData.text = it
+//        })
 
-        binding.btnLiveData.setOnClickListener {
-            count ++
-            model.textValue.value = count.toString()
-            CoroutineScope(Dispatchers.Main).launch {
-                delay(1000)
-                count += 50
+        binding.apply {
+            lifecycleOwner = this@LiveDataActivity
+            act = this@LiveDataActivity
+            btnLiveData.setOnClickListener {
+                count ++
                 model.textValue.value = count.toString()
+                CoroutineScope(Dispatchers.Main).launch {
+                    delay(1000)
+                    count += 50
+                    model.textValue.value = count.toString()
+
+                    // LiveData must run on Main Thread.
+                    // if you LiveDate run on other Thread, will use postValue() func.
+                }
             }
         }
 
@@ -60,5 +71,7 @@ class LiveDataActivity : AppCompatActivity() {
         return true
     }
 
-
+    inner class TestClass {
+        val testText = ""
+    }
 }
