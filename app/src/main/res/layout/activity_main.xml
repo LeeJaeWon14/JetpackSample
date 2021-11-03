@@ -10,10 +10,11 @@
     <TextView
         android:id="@+id/tv_text"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:text="@string/str_welcome"
-        android:layout_marginBottom="20dp"
-        android:textColor = "@color/black"/>
+        android:textColor = "@color/black"
+        android:gravity="center"/>
 
     <Button
         android:id = "@+id/btn_select"
