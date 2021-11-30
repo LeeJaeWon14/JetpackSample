@@ -23,7 +23,6 @@ class LiveDataActivity : AppCompatActivity() {
     val liveData : MutableLiveData<String> by lazy { MutableLiveData<String>() }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        binding = ActivityLiveDataBinding.inflate(layoutInflater)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_live_data)
 
         var count = 0
@@ -37,23 +36,40 @@ class LiveDataActivity : AppCompatActivity() {
 //            binding.tvLiveData.text = it
 //        })
 
+//        binding.apply {
+//            lifecycleOwner = this@LiveDataActivity
+//            act = this@LiveDataActivity
+//            btnLiveData.setOnClickListener {
+//                count ++
+//                model.textValue.value = count.toString()
+//                CoroutineScope(Dispatchers.Default).launch {
+//                    count += 50
+//                    model.textValue.postValue(count.toString())
+//                    delay(1000)
+//
+//                    // LiveData must run on Main Thread.
+//                    // if you LiveDate run on other Thread, will use postValue() func.
+//                }
+//            }
+//        }
+
         binding.apply {
             lifecycleOwner = this@LiveDataActivity
             act = this@LiveDataActivity
-            btnLiveData.setOnClickListener {
-                count ++
-                model.textValue.value = count.toString()
-                CoroutineScope(Dispatchers.Main).launch {
-                    delay(1000)
-                    count += 50
-                    model.textValue.value = count.toString()
 
-                    // LiveData must run on Main Thread.
-                    // if you LiveDate run on other Thread, will use postValue() func.
+            btnLiveData.setOnClickListener {
+                CoroutineScope(Dispatchers.Default).launch {
+                    for(idx in 0 .. 10) {
+                        model.textValue.postValue(idx.toString())
+                        delay(300)
+                    }
                 }
             }
-        }
 
+//            model.textValue.observe(this@LiveDataActivity, Observer {
+//                tvLiveData.text = it
+//            })
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

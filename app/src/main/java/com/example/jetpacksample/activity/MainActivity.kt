@@ -1,5 +1,6 @@
 package com.example.jetpacksample.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -24,33 +25,25 @@ class MainActivity : AppCompatActivity(), Pref.OnDataChanged {
 
     private fun callDialog() {
         val dlg = AlertDialog.Builder(this)
-        val arr = arrayOf("LiveData", "ViewModel", "DataBinding")
-//        dlg.setItems(arr, object : DialogInterface.OnClickListener {
-//            override fun onClick(dialog: DialogInterface?, which: Int) {
-//                when(which) {
-//                    0 -> {
-//                        startActivity(Intent(this@MainActivity, LiveDataActivity::class.java))
-//                    }
-//                    1 -> {
-//                        startActivity(Intent(this@MainActivity, ViewModelActivity::class.java))
-//                    }
-//                    2 -> {
-//                        startActivity(Intent(this@MainActivity, DataBindingActivity::class.java))
-//                    }
-//                    else -> { }
-//                }
-//            }
-//        })
-
-        val prefCommand = arrayOf("GET", "SET", "DELETE")
-        dlg.setItems(prefCommand) {dialog, which ->
-            when(which) {
-                0 -> {
-                    val pref = Pref.getInstance(this)?.getString(Pref.PREF_DATA)
-                    binding.tvText.text = pref
-                }
+        val arr = arrayOf("LiveData", "ViewModel", "DataBinding", "CameraX")
+        dlg.setItems(arr) { _, which ->
+            when (which) {
+                0 -> startActivity(Intent(this@MainActivity, LiveDataActivity::class.java))
+                1 -> startActivity(Intent(this@MainActivity, ViewModelActivity::class.java))
+                2 -> startActivity(Intent(this@MainActivity, DataBindingActivity::class.java))
+                3 -> startActivity(Intent(this@MainActivity, CameraXActivity::class.java))
             }
         }
+
+//        val prefCommand = arrayOf("GET", "SET", "DELETE")
+//        dlg.setItems(prefCommand) {dialog, which ->
+//            when(which) {
+//                0 -> {
+//                    val pref = Pref.getInstance(this)?.getString(Pref.PREF_DATA)
+//                    binding.tvText.text = pref
+//                }
+//            }
+//        }
 
         dlg.setCancelable(false)
         dlg.show()
