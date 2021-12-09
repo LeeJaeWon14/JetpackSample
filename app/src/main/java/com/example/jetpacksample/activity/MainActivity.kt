@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.jetpacksample.R
+import com.example.jetpacksample.activity.room.RoomActivity
 import com.example.jetpacksample.databinding.ActivityMainBinding
 import com.example.jetpacksample.util.Pref
 
@@ -25,13 +26,14 @@ class MainActivity : AppCompatActivity(), Pref.OnDataChanged {
 
     private fun callDialog() {
         val dlg = AlertDialog.Builder(this)
-        val arr = arrayOf("LiveData", "ViewModel", "DataBinding", "CameraX")
+        val arr = arrayOf("LiveData", "ViewModel", "DataBinding", "CameraX", "Room")
         dlg.setItems(arr) { _, which ->
             when (which) {
                 0 -> startActivity(Intent(this@MainActivity, LiveDataActivity::class.java))
                 1 -> startActivity(Intent(this@MainActivity, ViewModelActivity::class.java))
                 2 -> startActivity(Intent(this@MainActivity, DataBindingActivity::class.java))
                 3 -> startActivity(Intent(this@MainActivity, CameraXActivity::class.java))
+                4 -> startActivity(Intent(this@MainActivity, RoomActivity::class.java))
             }
         }
 

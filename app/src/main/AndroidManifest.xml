@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.jetpacksample">
+
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -10,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackSample">
-        <activity android:name=".activity.CameraXActivity"></activity>
+        <activity android:name=".activity.room.RoomActivity"></activity>
+        <activity android:name=".activity.CameraXActivity" />
         <activity android:name=".activity.LiveDataActivity" />
         <activity
             android:name=".activity.DataBindingActivity"
